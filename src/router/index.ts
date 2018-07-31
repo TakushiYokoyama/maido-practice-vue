@@ -1,5 +1,6 @@
+import completeIndex from '@/pages/complete/index.vue';
 import homeIndex from '@/pages/home/index.vue';
-import testIndex from '@/pages/test/index.vue';
+import practiceIndex from '@/pages/practice/index.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -13,9 +14,14 @@ export default new Router({
       component: homeIndex,
     },
     {
-      path: '/test',
-      name: 'testIndex',
-      component: testIndex,
+      path: '/practice',
+      name: 'practiceIndex',
+      component: practiceIndex,
+    },
+    {
+      path: '/complete',
+      name: 'completeIndex',
+      component: completeIndex,
     },
   ],
 });
