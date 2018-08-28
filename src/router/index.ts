@@ -1,6 +1,7 @@
 import completeIndex from '@/pages/complete/index.vue';
 import homeIndex from '@/pages/home/index.vue';
 import practiceIndex from '@/pages/practice/index.vue';
+import practiceSlack from '@/pages/practice/slack.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -23,5 +24,10 @@ export default new Router({
       name: 'completeIndex',
       component: completeIndex,
     },
+    {
+      path: '/practice-slack',
+      name: 'placticeSlack',
+      component: practiceSlack,
+    }
   ],
 });
