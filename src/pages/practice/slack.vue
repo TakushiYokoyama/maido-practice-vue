@@ -1,10 +1,15 @@
 <template>
     <div class="root">
-
-        <ul class="channels">
-            <li>general</li>
-            <li>random</li>
-        </ul>
+        <section class="side">
+            <h3>Channels</h3>
+            <ul class="channels">
+                <li>#general</li>
+                <li>#random</li>
+            </ul>
+        </section>
+        <section class="main">
+            
+        </section>
     </div>
 </template>
 
@@ -24,8 +29,23 @@ export default Vue.extend({
 
 <style lang="less" scoped>
     .root {
-        .channels {
-            list-style-type: none;
+        display: flex;
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        
+
+        .side {
+            h3 {
+                font-size: 1.1em;
+            }
+
+            .channels {
+                padding-left: 0;
+                list-style-type: none;
+            }
         }
     }
-</script>
+</style>

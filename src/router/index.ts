@@ -1,7 +1,8 @@
 import completeIndex from '@/pages/complete/index.vue';
 import homeIndex from '@/pages/home/index.vue';
 import practiceIndex from '@/pages/practice/index.vue';
-import practiceSlack from '@/pages/practice/slack.vue';
+import completeSlack from '@/pages/complete/slack.vue';
+import completeSlackChannel from '@/components/completeSlackChannel.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -25,9 +26,16 @@ export default new Router({
       component: completeIndex,
     },
     {
-      path: '/practice-slack',
-      name: 'placticeSlack',
-      component: practiceSlack,
+      path: '/complete-slack',
+      name: 'completeSlack',
+      component: completeSlack,
+      children: [
+        {
+          path: ':channelName',
+          component: completeSlackChannel,
+          props: true,
+        }
+      ]
     }
   ],
 });
