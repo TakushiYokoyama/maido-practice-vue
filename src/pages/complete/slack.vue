@@ -3,8 +3,7 @@
         <section class="side">
             <h3>Channels</h3>
             <ul class="channels">
-                <li><router-link to="/complete-slack/general">#general</router-link></li>
-                <li><router-link to="/complete-slack/random">#random</router-link></li>
+                <li v-for="channelName in channels" :key="channelName"><router-link :to="`/complete-slack/${channelName}`"># {{channelName}}</router-link></li>
             </ul>
         </section>
         <section class="main">
@@ -17,7 +16,8 @@
 import Vue from 'vue'
 export default Vue.extend({
   data(){
-    return{
+    return {
+        channels: ['general', 'random'],
     }
   },
   methods:{
