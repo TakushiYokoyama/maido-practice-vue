@@ -31,7 +31,7 @@ export default new Router({
       component: completeSlack,
       children: [
         {
-          path: ':channelName',
+          path: 'channels/:channelName',
           component: completeSlackChannel,
           props: true,
         }
