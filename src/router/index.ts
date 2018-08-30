@@ -34,8 +34,8 @@ export default new Router({
           path: 'channels/:channelName',
           component: completeSlackChannel,
           props: true,
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
 });

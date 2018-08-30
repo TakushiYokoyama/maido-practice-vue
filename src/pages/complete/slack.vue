@@ -28,24 +28,23 @@ export default Vue.extend({
 </script>
 
 <style lang="less" scoped>
-    .root {
-        display: flex;
+.root {
+  display: flex;
 
-        a {
-            color: black;
-            text-decoration: none;
-        }
-        
+  a {
+    color: black;
+    text-decoration: none;
+  }
 
-        .side {
-            h3 {
-                font-size: 1.1em;
-            }
-
-            .channels {
-                padding-left: 0;
-                list-style-type: none;
-            }
-        }
+  .side {
+    h3 {
+      font-size: 1.1em;
     }
+
+    .channels {
+      padding-left: 0;
+      list-style-type: none;
+    }
+  }
+}
 </style>
