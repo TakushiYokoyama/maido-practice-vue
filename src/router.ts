@@ -3,6 +3,7 @@ import completeIndex from '@/complete/pages/index.vue';
 import practiceIndex from '@/practice/pages/index.vue';
 import completeSlack from '@/complete/pages/slack.vue';
 import completeSlackChannel from '@/components/completeSlackChannel.vue';
+import completeBar from '@/complete/pages/bar.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -36,6 +37,11 @@ export default new Router({
           props: true,
         },
       ],
+    },
+    {
+      path: '/bar',
+      name: 'bar',
+      component: completeBar,
     },
   ],
 });
