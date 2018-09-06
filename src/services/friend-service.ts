@@ -1,4 +1,5 @@
 import IFriend from '../models/firend';
+import { delay } from '../common/async-helper';
 
 const malePersonalities = [
   'ごうけつ',
@@ -115,15 +116,16 @@ export const createEmptyFriend = () =>
     maxMp: 0,
     personality: '',
   } as IFriend);
-export const createNewFriend = (
+export const createNewFriend = async (
   id: number,
   p: {
     name: string;
     job: string;
     sex: string;
-  },
-) =>
-  Object.assign({}, p, {
+  }
+) => {
+  await delay(10);
+  return Object.assign({}, p, {
     id: id,
     atack: getRandomParameter(1, 20),
     agility: getRandomParameter(1, 20),
@@ -134,3 +136,4 @@ export const createNewFriend = (
     maxMp: getRandomParameter(0, 30),
     personality: getRandomPersonality(p.sex),
   }) as IFriend;
+};

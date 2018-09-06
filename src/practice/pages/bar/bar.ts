@@ -49,11 +49,14 @@ export default Vue.extend({
       this.clear();
       this.friend.id = -1;
     },
-    submit() {
+    async submit() {
       if (!this.isAddMode) {
         this.delete();
       } else {
-        const newFriend = createNewFriend(this.friends.length, this.friend);
+        const newFriend = await createNewFriend(
+          this.friends.length,
+          this.friend
+        );
         this.friends.push(newFriend);
       }
       this.changeAddMode();
