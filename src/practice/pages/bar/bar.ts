@@ -20,18 +20,6 @@ export default Vue.extend({
     isValid: function() {
       return this.friend.name && this.friend.sex && this.friend.job;
     },
-    formTitle: function() {
-      if (this.isAddMode) {
-        return 'あたらしいなかま';
-      }
-      return 'ステータス';
-    },
-    buttonText: function() {
-      if (this.isAddMode) {
-        return 'なかまにする';
-      }
-      return 'くびにする';
-    },
     sortedFriends: function() {
       return this.friends.sort((a, b) => {
         if (a.id < b.id) {
@@ -45,24 +33,20 @@ export default Vue.extend({
     },
   },
   methods: {
-    changeAddMode() {
-      this.clear();
-      this.friend.id = -1;
-    },
-    async submit() {
-      if (!this.isAddMode) {
-        this.delete();
-      } else {
-        const newFriend = await createNewFriend(
-          this.friends.length,
-          this.friend
-        );
-        this.friends.push(newFriend);
+    getSexName(sex: string) {
+      if (sex === 'male') {
+        return 'おとこ';
       }
-      this.changeAddMode();
+      return 'おんな';
     },
-    delete() {
+    async add() {
+      const newFriend = await createNewFriend(this.friends.length, this.friend);
+      this.friends.push(newFriend);
+      this.clear();
+    },
+    remove() {
       this.friends = this.friends.filter((x) => x.id !== this.friend.id);
+      this.clear();
     },
     clear() {
       this.friend = createEmptyFriend();

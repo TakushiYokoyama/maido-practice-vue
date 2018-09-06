@@ -14,6 +14,12 @@ export default Vue.extend({
     ),
   },
   methods: {
+    getSexName: (sex: string) => {
+      if (sex === 'male') {
+        return 'おとこ';
+      }
+      return 'おんな';
+    },
     ...mapActions<IBarActions>(
       'completeBarStore',
       'clear',

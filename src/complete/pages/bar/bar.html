@@ -103,7 +103,7 @@
           v-on:click="selectRow({friend:f})">
           <div class="table-cell">{{f.name}}</div>
           <div class="table-cell">{{f.job}}</div>
-          <div class="table-cell">{{f.sex}}</div>
+          <div class="table-cell">{{getSexName(f.sex)}}</div>
           <div class="table-cell">{{f.personality}}</div>
         </div>
       </div>

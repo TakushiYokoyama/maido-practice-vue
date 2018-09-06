@@ -124,7 +124,7 @@ export const createNewFriend = async (
     sex: string;
   }
 ) => {
-  await delay(10);
+  await delay(100);
   return Object.assign({}, p, {
     id: id,
     atack: getRandomParameter(1, 20),

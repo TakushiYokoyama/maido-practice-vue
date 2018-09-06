@@ -4,7 +4,8 @@
   </div>
   <div class="form" :class="{ 'form-mail': friend.sex === 'male','form-femail': friend.sex === 'female' }">
     <div class="row">
-      <h3>{{formTitle}}</h3>
+      <h3 v-if="isAddMode">あたらしいなかま</h3>
+      <h3 v-if="!isAddMode">ステータス</h3>
     </div>
     <div class="row">
       <div class="item small-item">
@@ -76,7 +77,8 @@
       <div class="item" />
       <div class="item small-item" />
       <div class="item small-item">
-        <button class="btn" v-bind:disabled="!isValid" v-on:click="submit">{{buttonText}}</button>
+        <button class="btn" v-if="isAddMode" v-bind:disabled="!isValid" v-on:click="add">なかまにする</button>
+        <button class="btn" v-if="!isAddMode" v-bind:disabled="!isValid" v-on:click="remove">くびにする</button>
       </div>
     </div>
   </div>
@@ -86,7 +88,7 @@
     </div>
     <div class="row">
       <div class="item small-item">
-        <button class="btn" v-on:click="changeAddMode" v-bind:disabled="isAddMode">なかまをくわえる</button>
+        <button class="btn" v-on:click="clear" v-bind:disabled="isAddMode">なかまをくわえる</button>
       </div>
     </div>
     <div class="row">
@@ -101,7 +103,7 @@
           v-on:click="selectRow(f)">
           <div class="table-cell">{{f.name}}</div>
           <div class="table-cell">{{f.job}}</div>
-          <div class="table-cell">{{f.sex}}</div>
+          <div class="table-cell">{{getSexName(f.sex)}}</div>
           <div class="table-cell">{{f.personality}}</div>
         </div>
       </div>

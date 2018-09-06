@@ -1,3 +1,4 @@
+import { IBarState } from './bar-store';
 import {
   DefineActions,
   DefineGetters,
@@ -8,16 +9,18 @@ import {
   createEmptyFriend,
   createNewFriend,
 } from '../../services/friend-service';
+import { Module } from 'vuex';
+import { IStore } from '../../store';
+import { getByLocalstorage } from '../../common/localstorage-helper';
 
 export interface IBarState {
   friend: IFriend;
   friends: IFriend[];
 }
-
-const barState: IBarState = {
+const barState = getByLocalstorage('completeBarStore', () => ({
   friend: createEmptyFriend(),
   friends: [],
-};
+}));
 
 export interface IBarGetters {
   isAddMode: boolean;
@@ -80,7 +83,7 @@ const barActions: DefineActions<IBarActions, IBarState, IBarMutations> = {
   },
 };
 
-export const completeBarStore = {
+export const completeBarStore: Module<IBarState, IStore> = {
   namespaced: true,
   state: barState,
   mutations: barMutations,
