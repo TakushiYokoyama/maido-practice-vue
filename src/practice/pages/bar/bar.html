@@ -77,8 +77,8 @@
       <div class="item" />
       <div class="item small-item" />
       <div class="item small-item">
-        <button class="btn" v-if="isAddMode" v-bind:disabled="!isValid" v-on:click="add({friend, friends})">なかまにする</button>
-        <button class="btn" v-if="!isAddMode" v-bind:disabled="!isValid" v-on:click="remove({id: friend.id})">くびにする</button>
+        <button class="btn" v-if="isAddMode" v-bind:disabled="!isValid" v-on:click="add">なかまにする</button>
+        <button class="btn" v-if="!isAddMode" v-bind:disabled="!isValid" v-on:click="remove">くびにする</button>
       </div>
     </div>
   </div>
@@ -100,7 +100,7 @@
           <div class="table-cell table-header-cell">せいかく</div>
         </div>
         <div class="table-row" v-for="f in sortedFriends" :key="f.id" :class="{ 'table-row-mail': f.sex === 'male','table-row-femail': f.sex === 'female','table-row-selected': f.id === friend.id }"
-          v-on:click="selectRow({friend:f})">
+          v-on:click="selectRow(f)">
           <div class="table-cell">{{f.name}}</div>
           <div class="table-cell">{{f.job}}</div>
           <div class="table-cell">{{getSexName(f.sex)}}</div>
