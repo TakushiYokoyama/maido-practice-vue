@@ -1,8 +1,10 @@
-import completeIndex from '@/pages/complete/index.vue';
-import homeIndex from '@/pages/home/index.vue';
-import practiceIndex from '@/pages/practice/index.vue';
-import completeSlack from '@/pages/complete/slack.vue';
+import homeIndex from '@/index.vue';
+import completeIndex from '@/complete/pages/index.vue';
+import practiceIndex from '@/practice/pages/index.vue';
+import completeSlack from '@/complete/pages/slack.vue';
 import completeSlackChannel from '@/components/completeSlackChannel.vue';
+import completeBar from '@/complete/pages/bar/index.vue';
+import practiceBar from '@/practice/pages/bar/index.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -26,7 +28,7 @@ export default new Router({
       component: completeIndex,
     },
     {
-      path: '/complete-slack',
+      path: '/complete/slack',
       name: 'completeSlack',
       component: completeSlack,
       children: [
@@ -36,6 +38,16 @@ export default new Router({
           props: true,
         },
       ],
+    },
+    {
+      path: '/complete/bar',
+      name: 'completeBar',
+      component: completeBar,
+    },
+    {
+      path: '/practice/bar',
+      name: 'practiceBar',
+      component: practiceBar,
     },
   ],
 });

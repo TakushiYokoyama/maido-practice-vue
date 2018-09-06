@@ -1,0 +1,112 @@
+<div class="root">
+  <div class="row">
+    <h3>ルイーダの酒場</h3>
+  </div>
+  <div class="form" :class="{ 'form-mail': friend.sex === 'male','form-femail': friend.sex === 'female' }">
+    <div class="row">
+      <h3 v-if="isAddMode">あたらしいなかま</h3>
+      <h3 v-if="!isAddMode">ステータス</h3>
+    </div>
+    <div class="row">
+      <div class="item small-item">
+        <label>なまえ</label>
+      </div>
+      <div class="item">
+        <input type="text" v-model="friend.name" maxlength="4" class="form-control" :readonly="!isAddMode">
+      </div>
+      <div class="item small-item">
+        <label>しょくぎょう</label>
+      </div>
+      <div class="item">
+        <select v-model="friend.job" class="form-control" v-if="isAddMode">
+          <option value="せんし">せんし</option>
+          <option value="ぶとうか">ぶとうか</option>
+          <option value="まほうつかい">まほうつかい</option>
+          <option value="そうりょ">そうりょ</option>
+          <option value="とうぞく">とうぞく</option>
+          <option value="しょうにん">しょうにん</option>
+          <option value="あそびにん">あそびにん</option>
+        </select>
+        <input type="text" v-model="friend.job" class="form-control" :readonly="!isAddMode" v-if="!isAddMode">
+      </div>
+    </div>
+    <div class="row">
+      <div class="item small-item">
+        <label>せいべつ</label>
+      </div>
+      <div class="item small-item">
+        <input type="radio" id="male" value="male" v-model="friend.sex" :disabled="!isAddMode">
+        <label for="male">おとこ</label>
+      </div>
+      <div class="item small-item">
+        <input type="radio" id="female" value="female" v-model="friend.sex" :disabled="!isAddMode">
+        <label for="female">おんな</label>
+      </div>
+      <div class="item small-item" v-if="!isAddMode">
+        <label>せいかく</label>
+      </div>
+      <div class="item" v-if="!isAddMode">
+        <input type="text" v-model="friend.personality" maxlength="4" class="form-control" readonly="readonly">
+      </div>
+    </div>
+    <div class="row" v-if="!isAddMode">
+      <div class="table">
+        <div class="table-row table-header-row">
+          <div class="table-cell table-header-cell">ちから</div>
+          <div class="table-cell table-header-cell">すばやさ</div>
+          <div class="table-cell table-header-cell">たいりょく</div>
+          <div class="table-cell table-header-cell">かしこさ</div>
+          <div class="table-cell table-header-cell">うんのよさ</div>
+          <div class="table-cell table-header-cell">さいだいHP</div>
+          <div class="table-cell table-header-cell">さいだいMP</div>
+        </div>
+        <div class="table-row">
+          <div class="table-cell">{{friend.atack}}</div>
+          <div class="table-cell">{{friend.agility}}</div>
+          <div class="table-cell">{{friend.physical}}</div>
+          <div class="table-cell">{{friend.intelligence}}</div>
+          <div class="table-cell">{{friend.luck}}</div>
+          <div class="table-cell">{{friend.maxHp}}</div>
+          <div class="table-cell">{{friend.maxMp}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="item" />
+      <div class="item" />
+      <div class="item" />
+      <div class="item small-item" />
+      <div class="item small-item">
+        <button class="btn" v-if="isAddMode" v-bind:disabled="!isValid" v-on:click="add({friend, friends})">なかまにする</button>
+        <button class="btn" v-if="!isAddMode" v-bind:disabled="!isValid" v-on:click="remove({id: friend.id})">くびにする</button>
+      </div>
+    </div>
+  </div>
+  <div class="list">
+    <div class="row">
+      <h3>めいぼ</h3>
+    </div>
+    <div class="row">
+      <div class="item small-item">
+        <button class="btn" v-on:click="clear" v-bind:disabled="isAddMode">なかまをくわえる</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="table">
+        <div class="table-row table-header-row">
+          <div class="table-cell table-header-cell">なまえ</div>
+          <div class="table-cell table-header-cell">しょくぎょう</div>
+          <div class="table-cell table-header-cell">せいべつ</div>
+          <div class="table-cell table-header-cell">せいかく</div>
+        </div>
+        <div class="table-row" v-for="f in sortedFriends" :key="f.id" :class="{ 'table-row-mail': f.sex === 'male','table-row-femail': f.sex === 'female','table-row-selected': f.id === friend.id }"
+          v-on:click="selectRow({friend:f})">
+          <div class="table-cell">{{f.name}}</div>
+          <div class="table-cell">{{f.job}}</div>
+          <div class="table-cell">{{getSexName(f.sex)}}</div>
+          <div class="table-cell">{{f.personality}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
