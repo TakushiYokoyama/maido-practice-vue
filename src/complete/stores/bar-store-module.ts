@@ -1,4 +1,4 @@
-import { IBarState } from './bar-store';
+import { IBarState } from './bar-store-module';
 import {
   DefineActions,
   DefineGetters,
@@ -28,9 +28,8 @@ export interface IBarGetters {
   sortedFriends: IFriend[];
 }
 
-const isAddMode = (state: IBarState) => state.friend.id < 0;
 const barGetters: DefineGetters<IBarGetters, IBarState> = {
-  isAddMode,
+  isAddMode: (state: IBarState) => state.friend.id < 0,
   isValid: (state: IBarState) =>
     Boolean(state.friend.name && state.friend.sex && state.friend.job),
   sortedFriends: (state: IBarState) => {

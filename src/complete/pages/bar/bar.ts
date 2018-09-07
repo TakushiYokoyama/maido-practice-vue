@@ -1,5 +1,9 @@
 import { mapState, mapGetters, mapActions } from '../../../common/store-helper';
-import { IBarState, IBarGetters, IBarActions } from './../../stores/bar-store';
+import {
+  IBarState,
+  IBarGetters,
+  IBarActions,
+} from '../../stores/bar-store-module';
 import Vue from 'vue';
 
 export default Vue.extend({

@@ -1,4 +1,4 @@
-# Front end hands on #2 component
+# component
 
 ## はじめに
 

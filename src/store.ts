@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex, { ModuleTree, Store } from 'vuex';
-import { completeBarStore } from './complete/stores/bar-store';
+import { completeBarStore } from './complete/stores/bar-store-module';
 import { createLocalstoragePlugin } from './common/localstorage-helper';
 
 Vue.use(Vuex);
